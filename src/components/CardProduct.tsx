@@ -11,10 +11,7 @@ export default function CardProduct({
   isFavorited: boolean;
 }) {
   return (
-    <li
-      key={product.id}
-      className="bg-gradient-to-bl from-pink-400 via-pink-400 to-pink-300 flex flex-col justify-between gap-y-1 p-2 rounded-xl"
-    >
+    <li className="bg-gradient-to-bl from-pink-400 via-pink-400 to-pink-300 flex flex-col justify-between gap-y-1 p-2 rounded-xl">
       <img
         src={product.image}
         alt={product.title}

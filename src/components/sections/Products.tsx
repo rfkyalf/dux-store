@@ -37,6 +37,7 @@ export default function ProductsSection() {
             const isFavorited = favorites.some((fav) => fav.id === product.id);
             return (
               <CardProduct
+                key={product.id}
                 product={product}
                 isFavorited={isFavorited}
                 onClick={() => {
