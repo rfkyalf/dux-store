@@ -27,35 +27,37 @@ export default function CategorySection() {
   ];
 
   return (
-    <div className="wrapper mt-8 md:mt-10 mb-4">
+    <section className="wrapper mt-8 md:mt-10 mb-4">
       <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 md:gap-6 xl:gap-8">
-        <li className="relative bg-gradient-to-r from-fuchsia-400 via-fuchsia-500 to-fuchsia-500 rounded-md p-4">
+        <li className="group relative bg-gradient-to-r from-fuchsia-400 via-fuchsia-500 to-fuchsia-500 rounded-md p-4 hover:scale-105 transition-transform duration-300">
           <img
             src="/all.png"
             alt="All"
-            className="absolute bottom-[-10px] left-[-10px] w-14 md:w-16 object-contain"
+            className="group-hover:-rotate-12 transition-transform duration-300 absolute bottom-[-10px] left-[-10px] w-14 md:w-16 object-contain"
           />
-          <p className="text-base text-neutral-50 font-medium text-right">
+          <p className="text-base text-white font-medium text-right">
             All Categories
           </p>
         </li>
         {categories.map((category, index) => (
           <li
             key={index}
-            className={`relative bg-gradient-to-tr 
-              ${colors[index % colors.length]} rounded-md p-4`}
+            className={`group relative bg-gradient-to-tr 
+              ${
+                colors[index % colors.length]
+              } rounded-md p-4 hover:scale-105 transition-transform duration-300`}
           >
             <img
               src={categoryImage[index % categoryImage.length]}
               alt={category}
-              className="absolute bottom-[-10px] left-[-10px] w-14 md:w-16 object-contain"
+              className="group-hover:-rotate-12 transition-transform duration-300 absolute bottom-[-10px] left-[-10px] w-14 md:w-16 object-contain"
             />
-            <p className="text-base text-neutral-50 font-medium capitalize text-right">
+            <p className="text-base text-white font-medium capitalize text-right">
               {category}
             </p>
           </li>
         ))}
       </ul>
-    </div>
+    </section>
   );
 }
