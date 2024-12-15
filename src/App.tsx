@@ -1,4 +1,5 @@
 import Navbar from './components/Navbar';
+import CategorySection from './components/sections/Category';
 import HeroSection from './components/sections/Hero';
 
 export default function App() {
@@ -6,6 +7,7 @@ export default function App() {
     <div className="overflow-hidden">
       <Navbar />
       <HeroSection />
+      <CategorySection />
     </div>
   );
 }
