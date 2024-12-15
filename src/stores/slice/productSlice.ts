@@ -18,6 +18,8 @@ interface Product {
 interface ProductState {
   categories: string[];
   products: Product[];
+  filteredProducts: Product[];
+  selectedCategory: string | null;
   loading: boolean;
   error: string | null;
 }
@@ -25,6 +27,8 @@ interface ProductState {
 const initialState: ProductState = {
   products: [],
   categories: [],
+  filteredProducts: [],
+  selectedCategory: null,
   loading: false,
   error: null,
 };
@@ -50,14 +54,26 @@ export const fetchCategories = createAsyncThunk(
 const productSlice = createSlice({
   name: 'products',
   initialState,
-  reducers: {},
+  reducers: {
+    setSelectedCategory(state, action) {
+      state.selectedCategory = action.payload;
+      state.filteredProducts =
+        action.payload === 'all'
+          ? state.products
+          : state.products.filter(
+              (product) => product.category === action.payload
+            );
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchProducts.pending, (state) => {
         state.loading = true;
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
+        state.loading = false;
         state.products = action.payload;
+        state.filteredProducts = action.payload;
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.loading = false;
@@ -68,6 +84,7 @@ const productSlice = createSlice({
         state.loading = true;
       })
       .addCase(fetchCategories.fulfilled, (state, action) => {
+        state.loading = false;
         state.categories = action.payload;
       })
       .addCase(fetchCategories.rejected, (state, action) => {
@@ -77,4 +94,5 @@ const productSlice = createSlice({
   },
 });
 
+export const { setSelectedCategory } = productSlice.actions;
 export default productSlice.reducer;
