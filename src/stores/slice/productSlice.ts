@@ -2,7 +2,7 @@ import { BASE_URL } from '@/helpers/constants';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-interface Product {
+export interface Product {
   id: number;
   title: string;
   price: number;
@@ -16,6 +16,7 @@ interface Product {
 }
 
 interface ProductState {
+  favorites: Product[];
   categories: string[];
   products: Product[];
   filteredProducts: Product[];
@@ -25,6 +26,7 @@ interface ProductState {
 }
 
 const initialState: ProductState = {
+  favorites: [],
   products: [],
   categories: [],
   filteredProducts: [],
@@ -64,6 +66,16 @@ const productSlice = createSlice({
               (product) => product.category === action.payload
             );
     },
+    addFavorite(state, action) {
+      const product = action.payload;
+      if (!state.favorites.find((fav) => fav.id === product.id)) {
+        state.favorites.push(product);
+      }
+    },
+    removeFavorite(state, action) {
+      const productId = action.payload;
+      state.favorites = state.favorites.filter((fav) => fav.id !== productId);
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -94,5 +106,6 @@ const productSlice = createSlice({
   },
 });
 
-export const { setSelectedCategory } = productSlice.actions;
+export const { setSelectedCategory, addFavorite, removeFavorite } =
+  productSlice.actions;
 export default productSlice.reducer;

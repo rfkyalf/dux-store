@@ -2,7 +2,7 @@ import { ShoppingBag } from 'lucide-react';
 
 export default function HeroSection() {
   return (
-    <section className="relative wrapper h-[400px] md:h-[300px] lg:h-fit bg-gradient-to-tr from-pink-400 via-pink-400 to-pink-300 my-4 flex flex-col rounded-xl">
+    <section className="relative wrapper h-[400px] md:h-[300px] lg:h-fit bg-gradient-to-tr from-pink-400 via-pink-400 to-pink-300 my-4 flex flex-col rounded-xl mt-20">
       <div className="flex flex-col gap-y-2 lg:gap-y-3 p-4 md:p-6 lg:p-16 md:max-w-[400px] lg:max-w-[650px]">
         <h2 className="text-3xl lg:text-4xl font-bold text-white text-pretty">
           Better Choices, Better Deals
