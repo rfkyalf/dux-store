@@ -39,7 +39,7 @@ export default function Navbar() {
   };
 
   return (
-    <div className="w-full shadow shadow-pink-200 bg-neutral-50 fixed z-40">
+    <div className="w-full shadow shadow-pink-200 bg-neutral-50 fixed top-0 z-40">
       <div className="wrapper py-4 flex items-center justify-between">
         <Logo />
         <div className="flex items-center gap-x-4 md:gap-x-6">
