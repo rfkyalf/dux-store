@@ -39,7 +39,7 @@ export default function CategorySection() {
 
   return (
     <section className="wrapper mt-8 md:mt-10 mb-4">
-      <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 md:gap-6 xl:gap-8">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 md:gap-6 xl:gap-8">
         <button
           onClick={() => handleCategoryClick('all')}
           className={`group relative bg-gradient-to-r from-fuchsia-400 via-fuchsia-500 to-fuchsia-500 rounded-md p-4 hover:scale-105 transition-transform duration-300 ring-4 ${
@@ -48,7 +48,7 @@ export default function CategorySection() {
         >
           <img
             src="/all.png"
-            alt="All"
+            alt="Category for all Products"
             className="group-hover:-rotate-12 transition-transform duration-300 absolute bottom-[-10px] left-[-10px] w-14 md:w-16 object-contain"
           />
           <p className="text-base text-white font-medium text-right">
@@ -78,7 +78,7 @@ export default function CategorySection() {
             >
               <img
                 src={categoryImage[index % categoryImage.length]}
-                alt={category}
+                alt={`category for ${category} products`}
                 className="group-hover:-rotate-12 transition-transform duration-300 absolute bottom-[-10px] left-[-10px] w-14 md:w-16 object-contain"
               />
               <p className="text-base text-white font-medium capitalize text-right">
@@ -87,7 +87,7 @@ export default function CategorySection() {
             </button>
           ))
         )}
-      </ul>
+      </div>
     </section>
   );
 }

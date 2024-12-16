@@ -13,9 +13,9 @@ export default function Footer() {
           </p>
         </div>
         <div className="flex flex-col gap-y-1">
-          <h3 className="text-white text-base md:text-lg font-medium">
+          <p className="text-white text-base md:text-lg font-medium">
             Find me on:
-          </h3>
+          </p>
           <ul className="flex items-center gap-x-2">
             <li>
               <a href="https://www.linkedin.com/in/rifkyalfarez/">

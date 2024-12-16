@@ -32,6 +32,9 @@ export default function CardProduct({
         </p>
         <div className="flex items-center gap-x-2">
           <button
+            aria-label={
+              isFavorited ? 'Remove from favorites' : 'Add to favorites'
+            }
             onClick={addToFav}
             className={`p-1 rounded-full ${
               isFavorited ? 'bg-rose-600' : 'bg-white'
@@ -48,6 +51,7 @@ export default function CardProduct({
             className={` p-1 rounded-full ${
               isInCart ? 'bg-blue-500' : 'bg-white'
             }`}
+            aria-label={isInCart ? 'Remove from cart' : 'Add to cart'}
           >
             <ShoppingCart
               className={`size-5 ${isInCart ? 'text-white' : 'text-blue-500'}`}
