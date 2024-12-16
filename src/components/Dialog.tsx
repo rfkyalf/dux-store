@@ -2,6 +2,7 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -11,10 +12,12 @@ export default function DialogModal({
   trigger,
   title,
   content,
+  footer,
 }: {
   trigger: React.ReactNode;
   title: React.ReactNode;
   content: React.ReactNode;
+  footer?: React.ReactNode;
 }) {
   return (
     <Dialog>
@@ -25,6 +28,7 @@ export default function DialogModal({
           <DialogDescription></DialogDescription>
         </DialogHeader>
         <div className="max-h-[400px] overflow-auto">{content}</div>
+        <DialogFooter>{footer}</DialogFooter>
       </DialogContent>
     </Dialog>
   );

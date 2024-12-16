@@ -1,6 +1,8 @@
 import {
+  addCart,
   addFavorite,
   fetchProducts,
+  removeCart,
   removeFavorite,
 } from '@/stores/slice/productSlice';
 import { AppDispatch, RootState } from '@/stores/store';
@@ -9,7 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import CardProduct from '../CardProduct';
 
 export default function ProductsSection() {
-  const { loading, error, filteredProducts, favorites } = useSelector(
+  const { loading, error, filteredProducts, favorites, cart } = useSelector(
     (state: RootState) => state.products
   );
   const dispatch: AppDispatch = useDispatch();
@@ -19,6 +21,7 @@ export default function ProductsSection() {
   }, [dispatch]);
 
   console.log(favorites);
+  console.log(cart);
 
   return (
     <section className="wrapper my-8">
@@ -35,18 +38,30 @@ export default function ProductsSection() {
         ) : (
           filteredProducts.map((product) => {
             const isFavorited = favorites.some((fav) => fav.id === product.id);
+            const handleAddToFav = () => {
+              if (isFavorited) {
+                dispatch(removeFavorite(product.id));
+              } else {
+                dispatch(addFavorite(product));
+              }
+            };
+            const isInCart = cart.some((crt) => crt.id === product.id);
+            const handleAddtoCart = () => {
+              if (isInCart) {
+                dispatch(removeCart(product.id));
+              } else {
+                dispatch(addCart(product));
+              }
+            };
+
             return (
               <CardProduct
                 key={product.id}
                 product={product}
                 isFavorited={isFavorited}
-                onClick={() => {
-                  if (isFavorited) {
-                    dispatch(removeFavorite(product.id));
-                  } else {
-                    dispatch(addFavorite(product));
-                  }
-                }}
+                isInCart={isInCart}
+                addToCart={handleAddtoCart}
+                addToFav={handleAddToFav}
               />
             );
           })

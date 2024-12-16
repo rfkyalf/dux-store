@@ -15,8 +15,13 @@ export interface Product {
   };
 }
 
+interface CartProduct extends Product {
+  quantity: number;
+}
+
 interface ProductState {
   favorites: Product[];
+  cart: CartProduct[];
   categories: string[];
   products: Product[];
   filteredProducts: Product[];
@@ -27,6 +32,7 @@ interface ProductState {
 
 const initialState: ProductState = {
   favorites: [],
+  cart: [],
   products: [],
   categories: [],
   filteredProducts: [],
@@ -76,6 +82,34 @@ const productSlice = createSlice({
       const productId = action.payload;
       state.favorites = state.favorites.filter((fav) => fav.id !== productId);
     },
+    addCart(state, action) {
+      const product = action.payload;
+      const existingProduct = state.cart.find((crt) => crt.id === product.id);
+      if (existingProduct) {
+        existingProduct.quantity += 1;
+      } else {
+        state.cart.push({ ...product, quantity: 1 });
+      }
+    },
+    decrementCart(state, action) {
+      const productId = action.payload;
+      const existingProduct = state.cart.find((crt) => crt.id === productId);
+
+      if (existingProduct) {
+        existingProduct.quantity -= 1;
+
+        if (existingProduct.quantity <= 0) {
+          state.cart = state.cart.filter((crt) => crt.id !== productId);
+        }
+      }
+    },
+    removeCart(state, action) {
+      const productId = action.payload;
+      state.cart = state.cart.filter((crt) => crt.id !== productId);
+    },
+    clearCart(state) {
+      state.cart = [];
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -106,6 +140,13 @@ const productSlice = createSlice({
   },
 });
 
-export const { setSelectedCategory, addFavorite, removeFavorite } =
-  productSlice.actions;
+export const {
+  setSelectedCategory,
+  addFavorite,
+  removeFavorite,
+  addCart,
+  decrementCart,
+  removeCart,
+  clearCart,
+} = productSlice.actions;
 export default productSlice.reducer;

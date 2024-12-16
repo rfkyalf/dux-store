@@ -3,12 +3,16 @@ import { Heart, ShoppingCart } from 'lucide-react';
 
 export default function CardProduct({
   product,
-  onClick,
+  addToFav,
+  addToCart,
   isFavorited,
+  isInCart,
 }: {
   product: Product;
-  onClick: () => void;
+  addToFav: () => void;
+  addToCart: () => void;
   isFavorited: boolean;
+  isInCart: boolean;
 }) {
   return (
     <li className="bg-gradient-to-bl from-pink-400 via-pink-400 to-pink-300 flex flex-col justify-between gap-y-1 p-2 rounded-xl">
@@ -28,7 +32,7 @@ export default function CardProduct({
         </p>
         <div className="flex items-center gap-x-2">
           <button
-            onClick={onClick}
+            onClick={addToFav}
             className={`p-1 rounded-full ${
               isFavorited ? 'bg-rose-600' : 'bg-white'
             }`}
@@ -39,9 +43,16 @@ export default function CardProduct({
               }`}
             />
           </button>
-          <p className="bg-blue-500 p-1 rounded-full">
-            <ShoppingCart className="size-5 text-white" />
-          </p>
+          <button
+            onClick={addToCart}
+            className={` p-1 rounded-full ${
+              isInCart ? 'bg-blue-500' : 'bg-white'
+            }`}
+          >
+            <ShoppingCart
+              className={`size-5 ${isInCart ? 'text-white' : 'text-blue-500'}`}
+            />
+          </button>
         </div>
       </div>
     </li>
