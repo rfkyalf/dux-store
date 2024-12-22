@@ -16,6 +16,12 @@ DuxStore is a simple e-commerce platform powered by Redux and FakeStoreAPI.
 - **ShadCN/ui**: Accessible UI components built with Tailwind CSS.
 - **Redux**: A state management library for JavaScript apps.
 
+## ✨ Key Features
+
+- **⭐ Favorite Products**: Save your favorite items for easy access anytime.  
+- **🛒 Shopping Cart**: Add products to your cart and check out with ease.  
+- **📱 Responsive Design**: Enjoy a seamless shopping experience on any device.  
+
 ## ⚙️ Prerequisites
 
 - **Node.js**
