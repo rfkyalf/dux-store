@@ -1,50 +1,54 @@
-# React + TypeScript + Vite
+# DuxStore - Discover, Shop, Enjoy. 🛒
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<div align="center" width="100%">
+   <img width="600" alt="duxstore" src="https://i.imgur.com/3Ovquyi.png">
+</div>
 
-Currently, two official plugins are available:
+## 🌟 Introduction
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+DuxStore is a simple e-commerce platform powered by Redux and FakeStoreAPI.
 
-## Expanding the ESLint configuration
+## 🧰 Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **React.js**: A library for building reusable UI components.
+- **TypeScript**: JavaScript with static typing for better code quality.
+- **Tailwind CSS**: A utility-first framework for responsive designs.
+- **ShadCN/ui**: Accessible UI components built with Tailwind CSS.
+- **Redux**: A state management library for JavaScript apps.
 
-- Configure the top-level `parserOptions` property like this:
+## ⚙️ Prerequisites
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- **Node.js**
+- **npm** or **yarn** or **pnpm** or **bun** for package management
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## 🛠️ Installation
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Follow the steps below to set up the project locally.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+1. Clone this repository:
+
+   ```bash
+   https://github.com/rfkyalf/dux-store.git
+   ```
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd dux-store
+   ```
+
+3. Install the dependencies:
+
+   ```bash
+   npm install
+   ```
+
+## 🚀 Usage
+
+1. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+2. Access the application in your browser at http://localhost:5173.
